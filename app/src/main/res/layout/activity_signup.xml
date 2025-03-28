@@ -61,6 +61,7 @@
     <Button
         android:id="@+id/auth_signup"
         style="@style/Custom.InputLabel"
+        android:backgroundTint="@color/accent"
         android:text="@string/auth_signup" />
 
     <TextView

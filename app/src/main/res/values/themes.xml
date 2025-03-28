@@ -6,4 +6,29 @@
     </style>
 
     <style name="Theme.DesafioPractico2" parent="Base.Theme.DesafioPractico2" />
+
+    <style name="Custom.Input" parent="Base.Theme.DesafioPractico2">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+    </style>
+
+    <style name="Custom.InputLabel" parent="Base.Theme.DesafioPractico2">
+        <item name="android:maxWidth">200dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="Custom.TextInput" parent="Base.Theme.DesafioPractico2">
+        <item name="android:maxWidth">480dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:padding">20dp</item>
+    </style>
 </resources>

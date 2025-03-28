@@ -1,8 +1,10 @@
 package edu.udb.dsm.desafio_practico_02
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -20,7 +22,10 @@ class SignupActivity : AppCompatActivity() {
         val passInput = findViewById<EditText>(R.id.auth_pass)
         val checkInput = findViewById<EditText>(R.id.auth_pass_check)
 
-//        findViewById<TextView>(R.id.auth_login)
+        findViewById<TextView>(R.id.auth_login).setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
+
         findViewById<Button>(R.id.auth_signup).setOnClickListener {
             val error = when {
                 aliasInput.text.isEmpty() -> R.string.auth_alias_err
@@ -45,6 +50,8 @@ class SignupActivity : AppCompatActivity() {
 
 //                        val db = FirebaseDatabase.getInstance().getReference("users")
 //                        val user = DbUser(res.user?.uid, alias, email)
+
+                        startActivity(Intent(this, MainActivity::class.java))
                     }
             }
         }
