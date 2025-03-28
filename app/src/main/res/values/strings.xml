@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">Desafio Practico 2</string>
+    <string name="app_name">Sistema de Notas 2025</string>
+
+    <!-- Authentication -->
+    <string name="auth_signup">Registrar</string>
+    <string name="auth_create">Crear cuenta</string>
+    <string name="auth_exists">Tengo cuenta</string>
+    <string name="auth_password">Contraseña</string>
+    <string name="auth_password_check">Confirmar contraseña</string>
+
+    <string name="auth_email_hint">Email: example@gmail.com</string>
 </resources>
