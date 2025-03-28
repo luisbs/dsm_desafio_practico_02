@@ -5,8 +5,14 @@
     <string name="auth_signup">Registrar</string>
     <string name="auth_create">Crear cuenta</string>
     <string name="auth_exists">Tengo cuenta</string>
-    <string name="auth_password">Contraseña</string>
-    <string name="auth_password_check">Confirmar contraseña</string>
 
-    <string name="auth_email_hint">Email: example@gmail.com</string>
+    <string name="auth_alias_hint">Nombres</string>
+    <string name="auth_email_hint">Correo electrónico</string>
+    <string name="auth_pass_hint">Contraseña</string>
+    <string name="auth_check_hint">Confirmar contraseña</string>
+
+    <string name="auth_alias_err">Ingrese nombre</string>
+    <string name="auth_email_err">Ingrese correo</string>
+    <string name="auth_pass_err">Ingrese contraseña</string>
+    <string name="auth_check_err">Las contraseñas no coinciden</string>
 </resources>
