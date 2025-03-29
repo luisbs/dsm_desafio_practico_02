@@ -33,8 +33,7 @@ class SignupActivity : AppBaseActivity() {
                 val email = emailInput.text.toString()
                 val pass = passInput.text.toString()
 
-                FirebaseAuth.getInstance()
-                    .createUserWithEmailAndPassword(email, pass)
+                auth.createUserWithEmailAndPassword(email, pass)
                     .addOnFailureListener { err -> notify(err.message) }
                     .addOnSuccessListener { res ->
                         notify(res.user?.uid)

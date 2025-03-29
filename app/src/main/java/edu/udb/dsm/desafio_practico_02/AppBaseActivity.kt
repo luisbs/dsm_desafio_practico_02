@@ -11,20 +11,32 @@ import kotlin.reflect.KClass
 
 abstract class AppBaseActivity : AppCompatActivity() {
     protected abstract val activityTitle: Int
-    protected open var guestActivity: Boolean = false
+
+    // authentication
+    protected open var guestActivity = false
+    protected lateinit var auth: FirebaseAuth
+    private var authStateListener = FirebaseAuth.AuthStateListener { auth ->
+        if (auth.currentUser === null) {
+            if (!guestActivity) switchTo(LoginActivity::class)
+        } else if (guestActivity) switchTo(MainActivity::class)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // check authentication
-        val user = FirebaseAuth.getInstance().currentUser
-        if (user === null) {
-            if (!guestActivity) switchTo(LoginActivity::class)
-        } else if (guestActivity) switchTo(MainActivity::class)
-
-        // user is authenticated
         supportActionBar?.setTitle(this.activityTitle)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        auth = FirebaseAuth.getInstance()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        auth.addAuthStateListener(authStateListener)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        auth.addAuthStateListener(authStateListener)
     }
 
     protected fun notify(message: Int) {
