@@ -10,27 +10,43 @@ import edu.udb.dsm.desafio_practico_02.AppBaseActivity
 import edu.udb.dsm.desafio_practico_02.R
 import kotlin.reflect.KClass
 
-class CreateScoreActivity : AppBaseActivity(), AdapterView.OnItemSelectedListener {
+class ScoreFormActivity : AppBaseActivity(), AdapterView.OnItemSelectedListener {
     override var parentActivity: KClass<*>? = ListScoresActivity::class
-    override val activityLayout = R.layout.activity_create_score
-    override val activityTitle = R.string.score_create
+    override val activityLayout = R.layout.activity_score_form
+    override val activityTitle = R.string.score_store
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val nameInput: EditText = findViewById(R.id.score_name)
         val lastnameInput: EditText = findViewById(R.id.score_lastname)
+        val scoreInput: EditText = findViewById(R.id.score_score)
 
         val gradeInput: Spinner = findViewById(R.id.score_grade)
-        gradeInput.adapter = arrayAdapter(R.array.score_grades)
+        val gradeAdapter = arrayAdapter(R.array.score_grades)
+        gradeInput.adapter = gradeAdapter
         gradeInput.onItemSelectedListener = this
 
         val subjectInput: Spinner = findViewById(R.id.score_subject)
-        subjectInput.adapter = arrayAdapter(R.array.score_subjects)
+        val subjectAdapter = arrayAdapter(R.array.score_subjects)
+        subjectInput.adapter = subjectAdapter
         subjectInput.onItemSelectedListener = this
 
-        val scoreInput: EditText = findViewById(R.id.score_score)
-        scoreInput.filters
+        // load editing
+        val uid = intent.getStringExtra("entry")
+        if (uid !== null) {
+            Score.get(uid) //
+                .addOnFailureListener(::failureListener)
+                .addOnSuccessListener {
+                    val score = it.getValue(Score::class.java)
+                    nameInput.setText(score?.name)
+                    lastnameInput.setText(score?.lastName)
+                    scoreInput.setText(score?.score.toString())
+                    gradeInput.setSelection(gradeAdapter.getPosition(score?.grade))
+                    subjectInput.setSelection(subjectAdapter.getPosition(score?.subject))
+                    // TODO guardarlo correctamente
+                }
+        }
 
         clickListener(R.id.score_store) {
             val nameValue = nameInput.text.toString().trim()
@@ -55,9 +71,14 @@ class CreateScoreActivity : AppBaseActivity(), AdapterView.OnItemSelectedListene
             }
 
             // store entry
-            Score(nameValue, lastnameValue, gradeValue!!, subjectValue!!, scoreValue).store() //
+            Score(nameValue, lastnameValue, gradeValue!!, subjectValue!!, scoreValue).store(uid) //
                 .addOnFailureListener(::failureListener) //
-                .addOnSuccessListener { switchTo(ListScoresActivity::class, R.string.score_created) }
+                .addOnSuccessListener {
+                    switchTo(
+                        ListScoresActivity::class,
+                        R.string.score_stored
+                    )
+                }
         }
     }
 

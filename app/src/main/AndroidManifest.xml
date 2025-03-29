@@ -30,7 +30,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".scores.CreateScoreActivity"
+            android:name=".scores.ScoreFormActivity"
             android:exported="false" />
     </application>
 </manifest>

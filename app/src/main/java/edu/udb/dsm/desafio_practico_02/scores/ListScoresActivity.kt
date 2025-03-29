@@ -1,5 +1,6 @@
 package edu.udb.dsm.desafio_practico_02.scores
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -32,6 +33,7 @@ class ListScoresActivity : AppBaseActivity() {
             .setQuery(Score.ref(), Score::class.java) //
             .setLifecycleOwner(this).build()
 
+        val self = this
         val adapter = object : FirebaseRecyclerAdapter<Score, ScoreHolder>(options) {
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScoreHolder {
                 return ScoreHolder.make(parent)
@@ -40,7 +42,11 @@ class ListScoresActivity : AppBaseActivity() {
             override fun onBindViewHolder(holder: ScoreHolder, position: Int, m: Score) {
                 holder.line1Txt.text = getString(R.string.score_line1, m.grade, m.name, m.lastName)
                 holder.line2Txt.text = getString(R.string.score_line2, m.subject, m.score)
-//                holder.editBtn.setOnClickListener {  }
+                holder.editBtn.setOnClickListener {
+                    val intent = Intent(self, ScoreFormActivity::class.java)
+                    intent.putExtra("entry", this.getRef(position).key!!)
+                    startActivity(intent)
+                }
                 holder.deleteBtn.setOnClickListener {
                     Score.remove(this.getRef(position).key!!) //
                         .addOnFailureListener(::failureListener)
@@ -61,7 +67,7 @@ class ListScoresActivity : AppBaseActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.menu_add -> switchTo(CreateScoreActivity::class)
+            R.id.menu_add -> switchTo(ScoreFormActivity::class)
             R.id.menu_exit -> {
                 FirebaseAuth.getInstance().signOut() //
                     .also { switchTo(LoginActivity::class, R.string.auth_bye) }

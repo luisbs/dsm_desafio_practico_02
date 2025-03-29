@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/Custom.FormLayout"
-    tools:context=".scores.CreateScoreActivity">
+    tools:context=".scores.ScoreFormActivity">
 
     <com.google.android.material.textfield.TextInputLayout style="@style/Custom.FormInput">
 
@@ -66,5 +66,5 @@
         android:id="@+id/score_store"
         style="@style/Custom.FormLabel"
         android:backgroundTint="@color/accent"
-        android:text="@string/score_create" />
+        android:text="@string/score_store" />
 </LinearLayout>
