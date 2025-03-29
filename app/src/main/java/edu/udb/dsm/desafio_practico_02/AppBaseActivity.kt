@@ -7,6 +7,7 @@ import android.view.View.OnClickListener
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import java.lang.Exception
 import kotlin.reflect.KClass
 
 abstract class AppBaseActivity : AppCompatActivity() {
@@ -54,5 +55,9 @@ abstract class AppBaseActivity : AppCompatActivity() {
 
     protected fun clickListener(viewId: Int, listener: OnClickListener) {
         findViewById<View>(viewId).setOnClickListener(listener)
+    }
+
+    protected fun failureListener(e: Exception) {
+        notify(e.message)
     }
 }

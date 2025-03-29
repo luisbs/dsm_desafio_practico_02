@@ -23,18 +23,21 @@ class LoginActivity : AppBaseActivity() {
             }
 
             if (error != -1) notify(error)
-            else {
-                val email = emailInput.text.toString()
-                val pass = passInput.text.toString()
-
-                auth.signInWithEmailAndPassword(email, pass)
-                    .addOnFailureListener { err -> notify(err.message) }
-                    .addOnSuccessListener { res ->
-                        notify(res.user?.uid)
-
-                        switchTo(MainActivity::class)
-                    }
-            }
+            else authenticate(
+                emailInput.text.toString(), //
+                passInput.text.toString()
+            )
         }
+    }
+
+    private fun authenticate(email: String, pass: String) {
+        // authenticate
+        auth.signInWithEmailAndPassword(email, pass)
+            .addOnFailureListener(::failureListener) //
+            .addOnSuccessListener {
+                // success
+                notify(R.string.auth_welcome)
+                switchTo(MainActivity::class)
+            }
     }
 }

@@ -2,6 +2,8 @@
     <string name="app_name">Sistema de Notas 2025</string>
 
     <!-- Authentication -->
+    <string name="auth_welcome">Bienvenido</string>
+
     <string name="auth_login_label">Ingreso</string>
     <string name="auth_login_title">Iniciar sesión</string>
     <string name="auth_login_action">Ingresar</string>
