@@ -40,7 +40,7 @@
         android:id="@+id/auth_login"
         style="@style/Custom.FormLabel"
         android:backgroundTint="@color/accent"
-        android:text="@string/auth_signup_action" />
+        android:text="@string/auth_login_action" />
 
     <TextView
         android:id="@+id/auth_signup"
