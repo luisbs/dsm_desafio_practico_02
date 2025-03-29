@@ -2,9 +2,15 @@
     <string name="app_name">Sistema de Notas 2025</string>
 
     <!-- Authentication -->
-    <string name="auth_signup">Registrar</string>
-    <string name="auth_create">Crear cuenta</string>
-    <string name="auth_exists">Tengo cuenta</string>
+    <string name="auth_login_label">Ingreso</string>
+    <string name="auth_login_title">Iniciar sesión</string>
+    <string name="auth_login_action">Ingresar</string>
+    <string name="auth_signup_call">Registrate</string>
+
+    <string name="auth_signup_label">Registro</string>
+    <string name="auth_signup_title">Registrarme</string>
+    <string name="auth_signup_action">Crear cuenta</string>
+    <string name="auth_login_call">Tengo cuenta</string>
 
     <string name="auth_alias_hint">Nombres</string>
     <string name="auth_email_hint">Correo electrónico</string>
