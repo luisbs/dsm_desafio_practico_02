@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/editTextUpdateName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:hint="Name"
+        tools:ignore="HardcodedText,TextFields" />
+
+    <EditText
+        android:id="@+id/editTextUpdateLastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Last Name"
+        tools:ignore="HardcodedText" />
+
+    <Spinner
+        android:id="@+id/spinnerUpdateGrade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Spinner
+        android:id="@+id/spinnerUpdateSubject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/editTextUpdateFinalGrade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Final Grade"
+        android:inputType="numberDecimal"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/buttonUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        tools:ignore="HardcodedText" />
+</LinearLayout>
