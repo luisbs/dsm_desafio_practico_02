@@ -1,9 +1,10 @@
-package edu.udb.dsm.desafio_practico_02
+package edu.udb.dsm.desafio_practico_02.auth
 
 import android.os.Bundle
 import android.widget.EditText
-import edu.udb.dsm.desafio_practico_02.db.entities.User
-import edu.udb.dsm.desafio_practico_02.db.repositories.UserRepository
+import edu.udb.dsm.desafio_practico_02.AppBaseActivity
+import edu.udb.dsm.desafio_practico_02.scores.ListScoresActivity
+import edu.udb.dsm.desafio_practico_02.R
 import kotlin.reflect.KClass
 
 class SignupActivity : AppBaseActivity() {
@@ -45,9 +46,9 @@ class SignupActivity : AppBaseActivity() {
             .addOnFailureListener(::failureListener) //
             .addOnSuccessListener { res ->
                 // store new user
-                UserRepository.store(res.user!!.uid, User(alias, email))
+                User(alias, email).store(res.user!!.uid)
                     .addOnFailureListener(::failureListener) //
-                    .addOnSuccessListener { switchTo(MainActivity::class, R.string.auth_welcome) }
+                    .addOnSuccessListener { switchTo(ListScoresActivity::class, R.string.auth_welcome) }
             }
     }
 }

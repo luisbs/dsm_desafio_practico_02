@@ -25,4 +25,8 @@
     <string name="auth_email_err">Ingrese correo</string>
     <string name="auth_pass_err">Ingrese contraseña</string>
     <string name="auth_check_err">Las contraseñas no coinciden</string>
+
+    <!-- Students -->
+    <string name="student_line1">Grade: %1$s, Student: %2$s %3$s</string>
+    <string name="student_line2">Subject: %1$s, Score: %2$d</string>
 </resources>

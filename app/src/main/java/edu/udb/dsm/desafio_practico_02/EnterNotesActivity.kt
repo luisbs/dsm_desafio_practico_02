@@ -1,3 +1,5 @@
+package edu.udb.dsm.desafio_practico_02
+
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -5,7 +7,6 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import edu.udb.dsm.desafio_practico_02.R
 
 class EnterGradesActivity : AppCompatActivity() {
 

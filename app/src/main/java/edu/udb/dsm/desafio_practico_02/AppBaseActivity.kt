@@ -8,6 +8,8 @@ import android.view.View.OnClickListener
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import edu.udb.dsm.desafio_practico_02.auth.LoginActivity
+import edu.udb.dsm.desafio_practico_02.scores.ListScoresActivity
 import java.lang.Exception
 import kotlin.reflect.KClass
 
@@ -22,7 +24,7 @@ abstract class AppBaseActivity : AppCompatActivity() {
     protected var authStateListener = FirebaseAuth.AuthStateListener { auth ->
         if (auth.currentUser === null) {
             if (!guestActivity) switchTo(LoginActivity::class)
-        } else if (guestActivity) switchTo(MainActivity::class)
+        } else if (guestActivity) switchTo(ListScoresActivity::class)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

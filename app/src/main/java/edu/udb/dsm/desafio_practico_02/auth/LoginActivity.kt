@@ -1,7 +1,10 @@
-package edu.udb.dsm.desafio_practico_02
+package edu.udb.dsm.desafio_practico_02.auth
 
 import android.os.Bundle
 import android.widget.EditText
+import edu.udb.dsm.desafio_practico_02.AppBaseActivity
+import edu.udb.dsm.desafio_practico_02.scores.ListScoresActivity
+import edu.udb.dsm.desafio_practico_02.R
 
 class LoginActivity : AppBaseActivity() {
     override val activityLayout = R.layout.activity_login
@@ -34,6 +37,6 @@ class LoginActivity : AppBaseActivity() {
         // authenticate
         auth.signInWithEmailAndPassword(email, pass)
             .addOnFailureListener(::failureListener) //
-            .addOnSuccessListener { switchTo(MainActivity::class, R.string.auth_welcome) }
+            .addOnSuccessListener { switchTo(ListScoresActivity::class, R.string.auth_welcome) }
     }
 }
