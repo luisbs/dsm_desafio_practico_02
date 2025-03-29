@@ -21,7 +21,7 @@ data class Score(
         }
     }
 
-    fun store(uid: String): Task<Void> {
-        return ref().child(uid).setValue(this)
+    fun store(): Task<Void> {
+        return ref().push().setValue(this)
     }
 }

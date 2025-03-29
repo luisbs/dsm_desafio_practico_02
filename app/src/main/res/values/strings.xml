@@ -27,6 +27,39 @@
     <string name="auth_check_err">Las contraseñas no coinciden</string>
 
     <!-- Students -->
-    <string name="student_line1">Grade: %1$s, Student: %2$s %3$s</string>
-    <string name="student_line2">Subject: %1$s, Score: %2$d</string>
+    <string name="score_add">Ingresar registro</string>
+    <string name="score_added">Registro ingresado</string>
+    <string name="score_line1">Grade: %1$s, Student: %2$s %3$s</string>
+    <string name="score_line2">Subject: %1$s, Score: %2$d</string>
+
+    <string name="score_name">Nombre</string>
+    <string name="score_lastname">Apellido</string>
+    <string name="score_grade">Grado:</string>
+    <string name="score_subject">Materia:</string>
+    <string name="score_score">Nota final</string>
+
+    <string name="score_name_err">Ingrese el Nombre</string>
+    <string name="score_lastname_err">Ingrese el Apellido</string>
+    <string name="score_grade_err">Seleccione el Grado</string>
+    <string name="score_subject_err">Seleccione la Materia</string>
+    <string name="score_score_err">La nota debe estar entre 0 y 10</string>
+
+    <string-array name="score_grades">
+        <item>Primero</item>
+        <item>Segundo</item>
+        <item>Tercero</item>
+        <item>Cuarto</item>
+        <item>Quinto</item>
+        <item>Sexto</item>
+        <item>Septimo</item>
+        <item>Octavo</item>
+        <item>Noveno</item>
+    </string-array>
+    <string-array name="score_subjects">
+        <item>Matematicas</item>
+        <item>Lenguaje</item>
+        <item>Sociales</item>
+        <item>Ciencias</item>
+        <item>Ingles</item>
+    </string-array>
 </resources>

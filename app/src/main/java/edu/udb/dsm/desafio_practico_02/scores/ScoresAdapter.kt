@@ -13,26 +13,26 @@ import edu.udb.dsm.desafio_practico_02.R
 class ScoresAdapter(
     options: FirebaseRecyclerOptions<Score> = FirebaseRecyclerOptions.Builder<Score>() //
         .setQuery(Score.ref(), Score::class.java).build()
-) : FirebaseRecyclerAdapter<Score, ScoresAdapter.StudentView>(options) {
+) : FirebaseRecyclerAdapter<Score, ScoresAdapter.ScoreView>(options) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StudentView {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScoreView {
         val view = LayoutInflater.from(parent.context) //
             .inflate(android.R.layout.simple_list_item_2, parent, false)
-        return StudentView(parent.context, view)
+        return ScoreView(parent.context, view)
     }
 
-    override fun onBindViewHolder(holder: StudentView, position: Int, entry: Score) {
+    override fun onBindViewHolder(holder: ScoreView, position: Int, entry: Score) {
         holder.bind(entry)
     }
 
-    class StudentView(private val ctx: Context, itemView: View) :
+    class ScoreView(private val ctx: Context, itemView: View) :
         RecyclerView.ViewHolder(itemView) {
         private val line1: TextView = itemView.findViewById(android.R.id.text1)
         private val line2: TextView = itemView.findViewById(android.R.id.text2)
 
         fun bind(i: Score) {
-            line1.text = ctx.getString(R.string.student_line1, i.grade, i.name, i.lastName)
-            line2.text = ctx.getString(R.string.student_line2, i.subject, i.score)
+            line1.text = ctx.getString(R.string.score_line1, i.grade, i.name, i.lastName)
+            line2.text = ctx.getString(R.string.score_line2, i.subject, i.score)
         }
     }
 }

@@ -38,6 +38,7 @@ class ListScoresActivity : AppBaseActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.menu_add -> switchTo(CreateScoreActivity::class)
             R.id.menu_exit -> {
                 FirebaseAuth.getInstance().signOut() //
                     .also { switchTo(LoginActivity::class, R.string.auth_bye) }

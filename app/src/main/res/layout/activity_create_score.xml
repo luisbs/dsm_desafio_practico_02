@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Custom.FormLayout"
+    tools:context=".scores.CreateScoreActivity">
+
+    <com.google.android.material.textfield.TextInputLayout style="@style/Custom.FormInput">
+
+        <EditText
+            android:id="@+id/score_name"
+            style="@style/Custom.TextInput"
+            android:autofillHints="name"
+            android:hint="@string/score_name"
+            android:inputType="textPersonName"
+            tools:ignore="HardcodedText" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout style="@style/Custom.FormInput">
+
+        <EditText
+            android:id="@+id/score_lastname"
+            style="@style/Custom.TextInput"
+            android:autofillHints="name"
+            android:hint="@string/score_lastname"
+            android:inputType="textPersonName"
+            tools:ignore="HardcodedText" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout style="@style/Custom.FormInput">
+
+        <TextView
+            style="@style/Custom.FormLabel"
+            android:layout_marginTop="0dp"
+            android:text="@string/score_grade"
+            android:textSize="14sp" />
+
+        <Spinner
+            android:id="@+id/score_grade"
+            style="@style/Custom.TextInput" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout style="@style/Custom.FormInput">
+
+        <TextView
+            style="@style/Custom.FormLabel"
+            android:layout_marginTop="0dp"
+            android:text="@string/score_subject"
+            android:textSize="14sp" />
+
+        <Spinner
+            android:id="@+id/score_subject"
+            style="@style/Custom.TextInput" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout style="@style/Custom.FormInput">
+
+        <EditText
+            android:id="@+id/score_score"
+            style="@style/Custom.TextInput"
+            android:autofillHints=""
+            android:hint="@string/score_score"
+            android:inputType="numberDecimal" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/score_store"
+        style="@style/Custom.FormLabel"
+        android:backgroundTint="@color/accent"
+        android:text="@string/score_add" />
+</LinearLayout>
