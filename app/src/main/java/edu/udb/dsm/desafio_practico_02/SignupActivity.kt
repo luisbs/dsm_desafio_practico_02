@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.widget.EditText
 import edu.udb.dsm.desafio_practico_02.db.entities.User
 import edu.udb.dsm.desafio_practico_02.db.repositories.UserRepository
+import kotlin.reflect.KClass
 
 class SignupActivity : AppBaseActivity() {
+    override var parentActivity: KClass<*>? = LoginActivity::class
     override val activityLayout = R.layout.activity_signup
     override val activityTitle = R.string.auth_signup_label
     override var guestActivity = true
@@ -45,11 +47,7 @@ class SignupActivity : AppBaseActivity() {
                 // store new user
                 UserRepository.store(res.user!!.uid, User(alias, email))
                     .addOnFailureListener(::failureListener) //
-                    .addOnSuccessListener {
-                        // success
-                        notify(R.string.auth_welcome)
-                        switchTo(MainActivity::class)
-                    }
+                    .addOnSuccessListener { switchTo(MainActivity::class, R.string.auth_welcome) }
             }
     }
 }

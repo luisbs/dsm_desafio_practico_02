@@ -3,6 +3,8 @@
 
     <!-- Authentication -->
     <string name="auth_welcome">Bienvenido</string>
+    <string name="auth_exit">Cerrar sesión</string>
+    <string name="auth_bye">Sesión cerrada</string>
 
     <string name="auth_login_label">Ingreso</string>
     <string name="auth_login_title">Iniciar sesión</string>

@@ -2,6 +2,7 @@ package edu.udb.dsm.desafio_practico_02
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.Toast
@@ -11,6 +12,7 @@ import java.lang.Exception
 import kotlin.reflect.KClass
 
 abstract class AppBaseActivity : AppCompatActivity() {
+    protected open var parentActivity: KClass<*>? = null
     protected abstract val activityLayout: Int
     protected abstract val activityTitle: Int
 
@@ -29,10 +31,9 @@ abstract class AppBaseActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        if (activityTitle != 0) {
-            supportActionBar?.setTitle(activityTitle)
-            supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        }
+        supportActionBar?.setTitle(activityTitle)
+        // only shows back button when there is a parentActivity
+        if (parentActivity !== null) supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onResume() {
@@ -45,6 +46,14 @@ abstract class AppBaseActivity : AppCompatActivity() {
         auth.addAuthStateListener(authStateListener)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (android.R.id.home == item.itemId && parentActivity !== null) {
+            startActivity(Intent(this, parentActivity?.java))
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     protected fun notify(message: Int) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
@@ -53,7 +62,8 @@ abstract class AppBaseActivity : AppCompatActivity() {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-    protected fun switchTo(cls: KClass<*>) {
+    protected fun switchTo(cls: KClass<*>, message: Int? = null) {
+        if (message != null) notify(message)
         startActivity(Intent(this, cls.java))
         finish()
     }

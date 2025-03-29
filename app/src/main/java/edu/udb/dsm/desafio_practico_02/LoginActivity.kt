@@ -34,10 +34,6 @@ class LoginActivity : AppBaseActivity() {
         // authenticate
         auth.signInWithEmailAndPassword(email, pass)
             .addOnFailureListener(::failureListener) //
-            .addOnSuccessListener {
-                // success
-                notify(R.string.auth_welcome)
-                switchTo(MainActivity::class)
-            }
+            .addOnSuccessListener { switchTo(MainActivity::class, R.string.auth_welcome) }
     }
 }
