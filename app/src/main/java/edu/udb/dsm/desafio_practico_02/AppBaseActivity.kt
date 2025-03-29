@@ -11,12 +11,13 @@ import java.lang.Exception
 import kotlin.reflect.KClass
 
 abstract class AppBaseActivity : AppCompatActivity() {
+    protected abstract val activityLayout: Int
     protected abstract val activityTitle: Int
 
     // authentication
     protected open var guestActivity = false
     protected lateinit var auth: FirebaseAuth
-    private var authStateListener = FirebaseAuth.AuthStateListener { auth ->
+    protected var authStateListener = FirebaseAuth.AuthStateListener { auth ->
         if (auth.currentUser === null) {
             if (!guestActivity) switchTo(LoginActivity::class)
         } else if (guestActivity) switchTo(MainActivity::class)
@@ -24,10 +25,14 @@ abstract class AppBaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar?.setTitle(this.activityTitle)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        setContentView(activityLayout)
 
         auth = FirebaseAuth.getInstance()
+
+        if (activityTitle != 0) {
+            supportActionBar?.setTitle(activityTitle)
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        }
     }
 
     override fun onResume() {

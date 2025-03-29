@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.widget.EditText
 
 class LoginActivity : AppBaseActivity() {
+    override val activityLayout = R.layout.activity_login
     override val activityTitle = R.string.auth_login_label
     override var guestActivity = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
 
         val emailInput = findViewById<EditText>(R.id.auth_email)
         val passInput = findViewById<EditText>(R.id.auth_pass)
@@ -24,8 +24,8 @@ class LoginActivity : AppBaseActivity() {
 
             if (error != -1) notify(error)
             else authenticate(
-                emailInput.text.toString(), //
-                passInput.text.toString()
+                emailInput.text.toString().trim(), //
+                passInput.text.toString().trim()
             )
         }
     }
