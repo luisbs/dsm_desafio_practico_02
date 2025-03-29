@@ -13,7 +13,7 @@ import kotlin.reflect.KClass
 class CreateScoreActivity : AppBaseActivity(), AdapterView.OnItemSelectedListener {
     override var parentActivity: KClass<*>? = ListScoresActivity::class
     override val activityLayout = R.layout.activity_create_score
-    override val activityTitle = R.string.score_add
+    override val activityTitle = R.string.score_create
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,7 +57,7 @@ class CreateScoreActivity : AppBaseActivity(), AdapterView.OnItemSelectedListene
             // store entry
             Score(nameValue, lastnameValue, gradeValue!!, subjectValue!!, scoreValue).store() //
                 .addOnFailureListener(::failureListener) //
-                .addOnSuccessListener { switchTo(ListScoresActivity::class, R.string.score_added) }
+                .addOnSuccessListener { switchTo(ListScoresActivity::class, R.string.score_created) }
         }
     }
 

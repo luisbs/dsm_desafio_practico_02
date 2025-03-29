@@ -17,8 +17,6 @@ class ListScoresActivity : AppBaseActivity() {
     override val activityLayout = R.layout.activity_list_scores
     override val activityTitle = R.string.app_name
 
-    private lateinit var adapter: ScoreHolder
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -32,7 +30,7 @@ class ListScoresActivity : AppBaseActivity() {
 
         val options = FirebaseRecyclerOptions.Builder<Score>() //
             .setQuery(Score.ref(), Score::class.java) //
-            .setLifecycleOwner(this).build();
+            .setLifecycleOwner(this).build()
 
         val adapter = object : FirebaseRecyclerAdapter<Score, ScoreHolder>(options) {
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScoreHolder {
@@ -42,6 +40,12 @@ class ListScoresActivity : AppBaseActivity() {
             override fun onBindViewHolder(holder: ScoreHolder, position: Int, m: Score) {
                 holder.line1Txt.text = getString(R.string.score_line1, m.grade, m.name, m.lastName)
                 holder.line2Txt.text = getString(R.string.score_line2, m.subject, m.score)
+//                holder.editBtn.setOnClickListener {  }
+                holder.deleteBtn.setOnClickListener {
+                    Score.remove(this.getRef(position).key!!) //
+                        .addOnFailureListener(::failureListener)
+                        .addOnSuccessListener { notify(R.string.score_deleted) }
+                }
             }
         }
 

@@ -27,8 +27,13 @@
     <string name="auth_check_err">Las contraseñas no coinciden</string>
 
     <!-- Students -->
-    <string name="score_add">Ingresar registro</string>
-    <string name="score_added">Registro ingresado</string>
+    <string name="score_create">Ingresar registro</string>
+    <string name="score_created">Registro ingresado</string>
+    <string name="score_edit">Editar registro</string>
+    <string name="score_edited">Registro editado</string>
+    <string name="score_delete">Eliminar registro</string>
+    <string name="score_deleted">Registro eliminado</string>
+
     <string name="score_line1"><b>(%1$s)</b>, %2$s %3$s</string>
     <string name="score_line2"><b>%1$s</b>, %2$.2f</string>
 

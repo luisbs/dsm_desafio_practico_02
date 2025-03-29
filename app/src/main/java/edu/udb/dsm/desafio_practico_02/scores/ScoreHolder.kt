@@ -3,6 +3,7 @@ package edu.udb.dsm.desafio_practico_02.scores
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import edu.udb.dsm.desafio_practico_02.R
@@ -10,6 +11,8 @@ import edu.udb.dsm.desafio_practico_02.R
 class ScoreHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val line1Txt: TextView = itemView.findViewById(R.id.score_line1)
     val line2Txt: TextView = itemView.findViewById(R.id.score_line2)
+    val editBtn: ImageButton = itemView.findViewById(R.id.score_edit)
+    val deleteBtn: ImageButton = itemView.findViewById(R.id.score_delete)
 
     companion object {
         fun make(parent: ViewGroup): ScoreHolder {

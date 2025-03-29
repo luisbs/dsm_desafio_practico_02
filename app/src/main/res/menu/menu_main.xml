@@ -8,6 +8,6 @@
 
     <item
         android:id="@+id/menu_add"
-        android:title="@string/score_add"
+        android:title="@string/score_create"
         app:showAsAction="never" />
 </menu>

@@ -66,5 +66,5 @@
         android:id="@+id/score_store"
         style="@style/Custom.FormLabel"
         android:backgroundTint="@color/accent"
-        android:text="@string/score_add" />
+        android:text="@string/score_create" />
 </LinearLayout>
