@@ -48,7 +48,7 @@ class CreateScoreActivity : AppBaseActivity(), AdapterView.OnItemSelectedListene
             }
 
             // validate score number
-            val scoreValue = nameInput.text.toString().toDoubleOrNull()
+            val scoreValue = scoreInput.text.toString().toDoubleOrNull()
             if (scoreValue === null || scoreValue < 0 || scoreValue > 10) {
                 notify(R.string.score_score_err)
                 return@clickListener

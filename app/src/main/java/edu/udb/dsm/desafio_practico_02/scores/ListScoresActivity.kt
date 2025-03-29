@@ -3,8 +3,11 @@ package edu.udb.dsm.desafio_practico_02.scores
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.firebase.ui.database.FirebaseRecyclerAdapter
+import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.firebase.auth.FirebaseAuth
 import edu.udb.dsm.desafio_practico_02.AppBaseActivity
 import edu.udb.dsm.desafio_practico_02.R
@@ -14,6 +17,8 @@ class ListScoresActivity : AppBaseActivity() {
     override val activityLayout = R.layout.activity_list_scores
     override val activityTitle = R.string.app_name
 
+    private lateinit var adapter: ScoreHolder
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -21,14 +26,28 @@ class ListScoresActivity : AppBaseActivity() {
         authStateListener.onAuthStateChanged(auth)
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onStart() {
+        super.onStart()
         if (auth.currentUser === null) return
 
-        // is authenticated
-        val scoresList = findViewById<RecyclerView>(R.id.scores_list)
+        val options = FirebaseRecyclerOptions.Builder<Score>() //
+            .setQuery(Score.ref(), Score::class.java) //
+            .setLifecycleOwner(this).build();
+
+        val adapter = object : FirebaseRecyclerAdapter<Score, ScoreHolder>(options) {
+            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScoreHolder {
+                return ScoreHolder.make(parent)
+            }
+
+            override fun onBindViewHolder(holder: ScoreHolder, position: Int, m: Score) {
+                holder.line1Txt.text = getString(R.string.score_line1, m.grade, m.name, m.lastName)
+                holder.line2Txt.text = getString(R.string.score_line2, m.subject, m.score)
+            }
+        }
+
+        val scoresList: RecyclerView = findViewById(R.id.scores_list)
         scoresList.layoutManager = LinearLayoutManager(this)
-        scoresList.adapter = ScoresAdapter()
+        scoresList.adapter = adapter
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

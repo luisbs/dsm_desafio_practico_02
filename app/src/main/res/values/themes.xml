@@ -7,7 +7,7 @@
 
     <style name="Theme.DesafioPractico2" parent="Base.Theme.DesafioPractico2" />
 
-    <style name="Custom.FormLayout">
+    <style name="Custom.FormLayout" parent="Base.Theme.DesafioPractico2">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:gravity">center</item>

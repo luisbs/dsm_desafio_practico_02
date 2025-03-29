@@ -5,11 +5,11 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
 data class Score(
-    val name: String,
-    val lastName: String,
-    val grade: String,
-    val subject: String,
-    val score: Double
+    var name: String? = null,
+    var lastName: String? = null,
+    var grade: String? = null,
+    var subject: String? = null,
+    var score: Double? = null,
 ) {
     companion object {
         fun ref(): DatabaseReference {
