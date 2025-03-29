@@ -13,7 +13,8 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppBaseActivity() {
-    override val activityTitle: Int = R.string.auth_login_label
+    override val activityTitle = R.string.auth_login_label
+    override var guestActivity = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

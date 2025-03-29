@@ -11,16 +11,16 @@ import kotlin.reflect.KClass
 
 abstract class AppBaseActivity : AppCompatActivity() {
     protected abstract val activityTitle: Int
+    protected open var guestActivity: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // check authentication
-        val auth = FirebaseAuth.getInstance()
-        if (auth.currentUser === null) {
-            switchTo(LoginActivity::class)
-            return
-        }
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user === null) {
+            if (!guestActivity) switchTo(LoginActivity::class)
+        } else if (guestActivity) switchTo(MainActivity::class)
 
         // user is authenticated
         supportActionBar?.setTitle(this.activityTitle)

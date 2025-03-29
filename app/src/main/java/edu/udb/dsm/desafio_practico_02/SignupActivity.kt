@@ -5,7 +5,8 @@ import android.widget.EditText
 import com.google.firebase.auth.FirebaseAuth
 
 class SignupActivity : AppBaseActivity() {
-    override val activityTitle: Int = R.string.auth_signup_label
+    override val activityTitle = R.string.auth_signup_label
+    override var guestActivity = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
