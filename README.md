@@ -3,6 +3,7 @@
 ## Integrantes
 
 - ML172003 - Luis Brayan Martínez Lemus
+- MS172008 - German Alexander Meléndez Serrano
 
 ## Artefactos
 
