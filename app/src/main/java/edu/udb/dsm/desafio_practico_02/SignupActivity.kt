@@ -2,7 +2,8 @@ package edu.udb.dsm.desafio_practico_02
 
 import android.os.Bundle
 import android.widget.EditText
-import com.google.firebase.auth.FirebaseAuth
+import edu.udb.dsm.desafio_practico_02.db.entities.User
+import edu.udb.dsm.desafio_practico_02.db.repositories.UserRepository
 
 class SignupActivity : AppBaseActivity() {
     override val activityTitle = R.string.auth_signup_label
@@ -28,23 +29,27 @@ class SignupActivity : AppBaseActivity() {
             }
 
             if (error != -1) notify(error)
-            else {
-//                val alias = aliasInput.text.toString()
-                val email = emailInput.text.toString()
-                val pass = passInput.text.toString()
+            else authenticate(
+                aliasInput.text.toString(), //
+                emailInput.text.toString(), //
+                passInput.text.toString()
+            )
+        }
+    }
 
-                FirebaseAuth.getInstance()
-                    .createUserWithEmailAndPassword(email, pass)
-                    .addOnFailureListener { err -> notify(err.message) }
-                    .addOnSuccessListener { res ->
-                        notify(res.user?.uid)
-
-//                        val db = FirebaseDatabase.getInstance().getReference("users")
-//                        val user = DbUser(res.user?.uid, alias, email)
-
+    private fun authenticate(alias: String, email: String, pass: String) {
+        // authenticate
+        auth.createUserWithEmailAndPassword(email, pass) //
+            .addOnFailureListener(::failureListener) //
+            .addOnSuccessListener { res ->
+                // store new user
+                UserRepository.store(res.user!!.uid, User(alias, email))
+                    .addOnFailureListener(::failureListener) //
+                    .addOnSuccessListener {
+                        // success
+                        notify(R.string.auth_welcome)
                         switchTo(MainActivity::class)
                     }
             }
-        }
     }
 }
