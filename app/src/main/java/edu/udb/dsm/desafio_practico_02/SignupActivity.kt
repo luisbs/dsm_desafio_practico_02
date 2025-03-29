@@ -2,7 +2,6 @@ package edu.udb.dsm.desafio_practico_02
 
 import android.os.Bundle
 import android.widget.EditText
-import com.google.firebase.auth.FirebaseAuth
 
 class SignupActivity : AppBaseActivity() {
     override val activityTitle = R.string.auth_signup_label

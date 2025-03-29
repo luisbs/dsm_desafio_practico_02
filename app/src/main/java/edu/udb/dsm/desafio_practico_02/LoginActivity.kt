@@ -1,16 +1,7 @@
 package edu.udb.dsm.desafio_practico_02
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppBaseActivity() {
     override val activityTitle = R.string.auth_login_label
